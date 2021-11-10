@@ -9,10 +9,12 @@ namespace Client.Game
         [SerializeField] GameObject _runState;
 
         Ui.LobbyScreen _screen;
+        FxService _fxService;
 
         private void Awake()
         {
             _screen = FindObjectOfType<Ui.LobbyScreen>(true);
+            _fxService = FindObjectOfType<FxService>();
         }
 
         private void OnEnable()
@@ -20,11 +22,15 @@ namespace Client.Game
             Time.timeScale = 1f;
 
             _screen.gameObject.SetActive(true);
+
+            _fxService.PlayUi("FX_Magic_Lights_01");
         }
 
         private void OnDisable()
         {
             _screen.gameObject.SetActive(false);
+
+            _fxService.StopUi("FX_Magic_Lights_01");
         }
 
         private void Update()

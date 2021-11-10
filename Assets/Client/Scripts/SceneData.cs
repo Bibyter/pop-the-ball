@@ -22,8 +22,9 @@ namespace Client
         [System.NonSerialized] public int currentScores;
         public int bestScores { private set { PlayerPrefs.SetInt("bs", value); } get { return PlayerPrefs.GetInt("bs", 0); } }
 
-        public void BestScoresUpdate(int v)
+        public void BestScoresUpdate(int v, out bool isRecord)
         {
+            isRecord = v > bestScores;
             bestScores = Mathf.Max(v, bestScores);
             PlayerPrefs.Save();
         }

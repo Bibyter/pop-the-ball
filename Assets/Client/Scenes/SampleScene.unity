@@ -337,6 +337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1632826173040849702, guid: 34ab71eec09ae864f88f4a5572ffb09c, type: 3}
+      propertyPath: EmissionModule.m_BurstCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6233078974663298561, guid: 34ab71eec09ae864f88f4a5572ffb09c, type: 3}
       propertyPath: m_Name
       value: Startup
@@ -384,6 +388,10 @@ PrefabInstance:
     - target: {fileID: 6233078974663298562, guid: 34ab71eec09ae864f88f4a5572ffb09c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233078975964930188, guid: 34ab71eec09ae864f88f4a5572ffb09c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 216.29999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34ab71eec09ae864f88f4a5572ffb09c, type: 3}
