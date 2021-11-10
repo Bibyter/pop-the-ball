@@ -6,16 +6,17 @@ namespace Client.Game
 {
     public sealed class Run : MonoBehaviour
     {
-        [SerializeField] GameObject _gameScreen;
         [SerializeField] GameObject _failState;
 
+        Ui.GameScreen _screen;
         Spawner _spawner;
         SceneData _sceneData;
 
         private void Awake()
         {
-            _spawner = FindObjectOfType<Spawner>(); // can use the injector
-            _sceneData = FindObjectOfType<SceneData>(); // can use the injector
+            _spawner = FindObjectOfType<Spawner>();
+            _sceneData = FindObjectOfType<SceneData>();
+            _screen = FindObjectOfType<Ui.GameScreen>(true);
         }
 
         private void OnEnable()
@@ -23,13 +24,15 @@ namespace Client.Game
             _spawner.BeginSpawn();
             StartCoroutine(BallVelocityProcess());
             _sceneData.ballDeadBorder = -5f; // can calk value with camera size
-            _gameScreen.SetActive(true);
+            _screen.gameObject.SetActive(true);
         }
 
         private void OnDisable()
         {
-            _spawner.EndSpawn();
-            _gameScreen.SetActive(false);
+            // trouble on destroy scene - var is null
+            if (_spawner != null) _spawner.EndSpawn();
+
+            _screen.gameObject.SetActive(false);
         }
 
         private void Update()

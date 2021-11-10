@@ -6,17 +6,25 @@ namespace Client.Game
 {
     public sealed class Lobby : MonoBehaviour
     {
-        [SerializeField] GameObject _lobbyScreen; // can use the injector
         [SerializeField] GameObject _runState;
+
+        Ui.LobbyScreen _screen;
+
+        private void Awake()
+        {
+            _screen = FindObjectOfType<Ui.LobbyScreen>(true);
+        }
 
         private void OnEnable()
         {
-            _lobbyScreen.SetActive(true);
+            Time.timeScale = 1f;
+
+            _screen.gameObject.SetActive(true);
         }
 
         private void OnDisable()
         {
-            _lobbyScreen.SetActive(false);
+            _screen.gameObject.SetActive(false);
         }
 
         private void Update()
